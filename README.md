@@ -6,7 +6,24 @@ E-Commerce Retail Data Analysis is to understand customer behavior using their p
 ## Tools
 - Database Management System: SQL Server
 - SQL Editor: SQL Server Management Studio (SSMS)
-- Version Control: Git
 
 
-* Business Problem: 
+### Dataset: Customers
+
+**Description:**
+The Customers dataset contains information about customers, including their customer ID, date of birth (DOB), gender, and city code.
+
+**Columns:**
+- Customer_ID (int): Unique identifier for each customer.
+- DOB (date): Date of birth of the customer.
+- Gender (varchar): Gender of the customer.
+- City_Code (int): City code of the customer.
+
+**Size:**
+- Number of columns: 4
+- Number of rows: 5647
+
+**Purpose:**
+This dataset is used for analyzing customer demographics and city-wise distribution within the company.
+
+
