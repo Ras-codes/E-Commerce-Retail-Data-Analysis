@@ -1,8 +1,7 @@
-<center>
+<p align="center">
+  <b>E-Commerce Retail Data Analysis</b>
+</p>
 
-# E-Commerce Retail Data Analysis
-
-</center>
 
 E-Commerce Retail Data Analysis is to understand customer behavior using their point of sales data.
 
