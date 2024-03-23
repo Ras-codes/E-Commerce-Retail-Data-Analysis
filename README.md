@@ -1,6 +1,7 @@
-<p align="center">
-  E-Commerce Retail Data Analysis
-</p>
+<div align="center">
+  <h1>E-Commerce Retail Data Analysis</h1>
+</div>
+
 
 
 
