@@ -8,42 +8,69 @@ E-Commerce Retail Data Analysis is to understand customer behavior using their p
 - SQL Editor: SQL Server Management Studio (SSMS)
 
 
-### Dataset: 
+### Dataset Description: 
 
 ## Customers
 
 **Description:**
 The Customers dataset contains information about customers, including their customer ID, date of birth (DOB), gender, and city code.
 
-**Columns:**
+**Variables:**
 - Customer_ID (int): Unique identifier for each customer.
 - DOB (date): Date of birth of the customer.
 - Gender (varchar): Gender of the customer.
 - City_Code (int): City code of the customer.
 
-**Size:**
-- Number of columns: 4
-- Number of rows: 5647
+**Schema:**
+- Number of variables: 4
+- Number of records: 5647
 
 **Purpose:**
-This dataset is used for analyzing customer demographics and city-wise distribution within the company.
+This dataset is used to store customer demographics and information.
 
 ## Prod_cat_info
 
 **Description:**
 The Prod_cat_info dataset contains information about product categories and subcategories.
 
-**Columns:**
+**Variables:**
 - Prod_cat_code (int): Product category code.
 - Prod_cat (varchar): Product category.
 - Prod_sub_cat_code (int): Product subcategory code.
 - Prod_subcat (varchar): Product subcategory.
 
-**Size:**
-- Number of columns: 4
-- Number of rows: 23
+**Schema:**
+- Number of variables: 4
+- Number of records: 23
 
 **Purpose:**
-This dataset is used for categorizing products and analyzing product category and subcategory trends.
+This dataset is used for categorizing products based on their category and subcategory.
+
+## Transactions
+
+**Description:**
+The Transactions dataset contains information about transactions, including transaction ID, customer ID, transaction date, product subcategory code, product category code, quantity purchased, unit rate, tax amount, total amount, and store type.
+
+**Variables:**
+- transaction_id (int): Unique identifier for each transaction.
+- cust_id (int): Customer ID associated with the transaction.
+- tran_date (date): Date of the transaction.
+- prod_subcat_code (int): Product subcategory code.
+- prod_cat_code (int): Product category code.
+- Qty (int): Quantity of products purchased (Negative if it is a return order).
+- Rate (decimal): Unit rate of the product (Negative if it is a return order).
+- Tax (decimal): Tax amount for the transaction.
+- total_amt (decimal): Total amount of the transaction (Negative if it is a return order).
+- Store_type (varchar): Type of store where the transaction occurred.
+
+**Schema:**
+- Number of columns: 10
+- Number of rows: 23053
+
+**Purpose:**
+This dataset is used for analyzing transactional data, including customer purchase behavior and store performance metrics.
+
+
+
 
 
