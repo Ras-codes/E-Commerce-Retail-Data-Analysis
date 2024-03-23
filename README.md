@@ -8,7 +8,9 @@ E-Commerce Retail Data Analysis is to understand customer behavior using their p
 - SQL Editor: SQL Server Management Studio (SSMS)
 
 
-### Dataset: Customers
+### Dataset: 
+
+## Customers
 
 **Description:**
 The Customers dataset contains information about customers, including their customer ID, date of birth (DOB), gender, and city code.
@@ -25,5 +27,23 @@ The Customers dataset contains information about customers, including their cust
 
 **Purpose:**
 This dataset is used for analyzing customer demographics and city-wise distribution within the company.
+
+## Prod_cat_info
+
+**Description:**
+The Prod_cat_info dataset contains information about product categories and subcategories.
+
+**Columns:**
+- Prod_cat_code (int): Product category code.
+- Prod_cat (varchar): Product category.
+- Prod_sub_cat_code (int): Product subcategory code.
+- Prod_subcat (varchar): Product subcategory.
+
+**Size:**
+- Number of columns: 4
+- Number of rows: 23
+
+**Purpose:**
+This dataset is used for categorizing products and analyzing product category and subcategory trends.
 
 
