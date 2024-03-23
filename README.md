@@ -1,5 +1,5 @@
 <p align="center">
-  <b>E-Commerce Retail Data Analysis</b>
+  <h1>E-Commerce Retail Data Analysis</h1>
 </p>
 
 
