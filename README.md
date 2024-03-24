@@ -79,3 +79,26 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 
 
+### Data Preparation and Understanding: 
+
+## 1. 
+
+**Query:**
+- Customer_ID (int): Unique identifier for each customer.
+- DOB (date): Date of birth of the customer.
+- Gender (varchar): Gender of the customer.
+- City_Code (int): City code of the customer.
+
+**Methods used:**
+- Number of variables: 4
+- Number of records: 5647
+
+**Schema:**
+- Number of variables: 4
+- Number of records: 5647
+
+**Result:**
+This dataset is used to store customer demographics and information.
+
+**Business Solution:**
+This dataset is used to store customer demographics and information.
