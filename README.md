@@ -109,3 +109,122 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Business Solution:**
 - These queries are used to count the records in each table which can help to know data volume.
+
+
+
+## 2. What is the total number of transactions that have a return?
+
+**Query:**
+```
+  SELECT COUNT(*) AS return_transactions
+  FROM [Transactions]
+  WHERE total_amt < 0
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+- Filter - WHERE
+
+**Schema:**
+- Number of variables: 1
+- Number of records: 3 records (seperate)
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/06c062ce-5a6b-434a-b22d-4b2706987456)
+
+**Business Solution:**
+- These queries are used to count the records in each table which can help to know data volume.
+
+
+
+## 3. What is the total number of rows in each of the 3 tables in the database?
+
+**Query:**
+```
+  SELECT COUNT(*) AS Total_no_of_records_in_Trans
+  FROM [Transactions]
+
+  SELECT COUNT(*) AS Total_no_of_records_in_Prod
+  FROM [Prod_cat_info]
+
+  SELECT COUNT(*) AS Total_no_of_records_in_Cust
+  FROM [Customer]
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 1
+- Number of records: 3 records (seperate)
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/bee1af48-0104-4b36-b0ab-f637a32532e1)
+
+
+**Business Solution:**
+- These queries are used to count the records in each table which can help to know data volume.
+
+
+
+## 4. What is the total number of rows in each of the 3 tables in the database?
+
+**Query:**
+```
+  SELECT COUNT(*) AS Total_no_of_records_in_Trans
+  FROM [Transactions]
+
+  SELECT COUNT(*) AS Total_no_of_records_in_Prod
+  FROM [Prod_cat_info]
+
+  SELECT COUNT(*) AS Total_no_of_records_in_Cust
+  FROM [Customer]
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 1
+- Number of records: 3 records (seperate)
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/bee1af48-0104-4b36-b0ab-f637a32532e1)
+
+
+**Business Solution:**
+- These queries are used to count the records in each table which can help to know data volume.
+
+
+
+## ?. What is the total number of rows in each of the 3 tables in the database?
+
+**Query:**
+```
+  SELECT COUNT(*) AS Total_no_of_records_in_Trans
+  FROM [Transactions]
+
+  SELECT COUNT(*) AS Total_no_of_records_in_Prod
+  FROM [Prod_cat_info]
+
+  SELECT COUNT(*) AS Total_no_of_records_in_Cust
+  FROM [Customer]
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 1
+- Number of records: 3 records (seperate)
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/bee1af48-0104-4b36-b0ab-f637a32532e1)
+
+
+**Business Solution:**
+- These queries are used to count the records in each table which can help to know data volume.
