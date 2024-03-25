@@ -84,7 +84,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 ## 1. 
 
 **Query:**
-  SELECT COUNT(*) AS Total_no_of_records_in_Trans
+ - SELECT COUNT(*) AS Total_no_of_records_in_Trans
   FROM [Transactions]
 
   SELECT COUNT(*) AS total_no_of_records_in_Prod
@@ -101,7 +101,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 - Number of records: 3 records (seperate)
 
 **Result:**
-![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/a4685667-ae59-4e9d-b282-6d39496add99)
+- ![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/a4685667-ae59-4e9d-b282-6d39496add99)
 
 **Business Solution:**
-These queries are used to count the records in each table which can help to know data volume.
+- These queries are used to count the records in each table which can help to know data volume.
