@@ -138,8 +138,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 
 
-## 3. What is the time range of the transaction data available for analysis? Show the
-output in number of days, months and years simultaneously in different columns.
+## 3. What is the time range of the transaction data available for analysis? Show the output in number of days, months and years simultaneously in different columns.
 
 **Query:**
 ```
