@@ -103,6 +103,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 - Number of records: 3 records (seperate)
 
 **Result:**
+
 ![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/bee1af48-0104-4b36-b0ab-f637a32532e1)
 
 
