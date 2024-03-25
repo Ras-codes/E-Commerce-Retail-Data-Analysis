@@ -81,17 +81,19 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 ### Data Preparation and Understanding: 
 
-## 1. 
+## 1. What is the total number of rows in each of the 3 tables in the database?
 
 **Query:**
- - SELECT COUNT(*) AS Total_no_of_records_in_Trans
+````ssms
+- SELECT COUNT(*) AS Total_no_of_records_in_Trans
   FROM [Transactions]
 
-  SELECT COUNT(*) AS total_no_of_records_in_Prod
+- SELECT COUNT(*) AS total_no_of_records_in_Prod
   FROM [Prod_cat_info]
 
-  SELECT COUNT(*) AS total_no_of_records_in_Cust
+- SELECT COUNT(*) AS total_no_of_records_in_Cust
   FROM [Customer]
+````
 
 **Methods used:**
 - Functions - COUNT (aggregate)
