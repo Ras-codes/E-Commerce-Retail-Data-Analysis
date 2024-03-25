@@ -79,7 +79,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 
 
-#### Data Preparation and Understanding: 
+# Data Preparation and Understanding: 
 
 ## 1. What is the total number of rows in each of the 3 tables in the database?
 
