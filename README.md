@@ -100,7 +100,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Schema:**
 - Number of variables: 1
-- Number of records: 3 records (seperate)
+- Number of records: 3 (seperate)
 
 **Result:**
 
@@ -127,104 +127,394 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Schema:**
 - Number of variables: 1
-- Number of records: 3 records (seperate)
+- Number of records: 1 
 
 **Result:**
 
 ![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/06c062ce-5a6b-434a-b22d-4b2706987456)
 
 **Business Solution:**
-- These queries are used to count the records in each table which can help to know data volume.
+- This query will display the number of returns which can help to improve product quality, inventory management and customer satisfaction.
 
 
 
-## 3. What is the total number of rows in each of the 3 tables in the database?
+## 3. What is the time range of the transaction data available for analysis? Show the
+output in number of days, months and years simultaneously in different columns.
 
 **Query:**
 ```
-  SELECT COUNT(*) AS Total_no_of_records_in_Trans
+  SELECT
+  DATEDIFF(DAY, MIN(tran_date), MAX(tran_date)) AS Time_Range_in_Days,
+  DATEDIFF(MONTH, MIN(tran_date), MAX(tran_date)) AS Time_Range_in_Months,
+  DATEDIFF(YEAR, MIN(tran_date), MAX(tran_date)) AS Time_Range_in_Years
   FROM [Transactions]
+```
 
-  SELECT COUNT(*) AS Total_no_of_records_in_Prod
+**Methods used:**
+- Functions - DATEDIFF
+- Functions - MIN (aggregate)
+- Functions - MAX (aggregate)
+
+**Schema:**
+- Number of variables: 3
+- Number of records: 1
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/3ec1ee8e-21b3-4ab1-b3dc-98d9b5177de7)
+
+**Business Solution:**
+- Here we have the timespan of data in number of days, months, years which can be used for data analysis and documentation purpose.
+
+
+
+## 4. Which product category does the sub-category “DIY” belong to?
+
+**Query:**
+```
+  SELECT prod_cat,prod_subcat
   FROM [Prod_cat_info]
+  WHERE prod_subcat = 'DIY'
+```
 
-  SELECT COUNT(*) AS Total_no_of_records_in_Cust
-  FROM [Customer]
+**Methods used:**
+- Filter - WHERE
+
+**Schema:**
+- Number of variables: 2
+- Number of records: 1
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/e2fd74dd-d870-4ca8-af84-80bd83b8c867)
+
+**Business Solution:**
+- The Books category has DIY subcategory. Queries like this can be used to find which subcategory belongs to which category.
+
+
+
+# Data Analysis: 
+
+## 1. 
+
+**Query:**
+```
+
 ```
 
 **Methods used:**
 - Functions - COUNT (aggregate)
 
 **Schema:**
-- Number of variables: 1
-- Number of records: 3 records (seperate)
+- Number of variables: 
+- Number of records: 
 
 **Result:**
 
-![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/bee1af48-0104-4b36-b0ab-f637a32532e1)
-
 
 **Business Solution:**
-- These queries are used to count the records in each table which can help to know data volume.
+- 
 
 
-
-## 4. What is the total number of rows in each of the 3 tables in the database?
+## 2. 
 
 **Query:**
 ```
-  SELECT COUNT(*) AS Total_no_of_records_in_Trans
-  FROM [Transactions]
 
-  SELECT COUNT(*) AS Total_no_of_records_in_Prod
-  FROM [Prod_cat_info]
-
-  SELECT COUNT(*) AS Total_no_of_records_in_Cust
-  FROM [Customer]
 ```
 
 **Methods used:**
 - Functions - COUNT (aggregate)
 
 **Schema:**
-- Number of variables: 1
-- Number of records: 3 records (seperate)
+- Number of variables: 
+- Number of records: 
 
 **Result:**
 
-![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/bee1af48-0104-4b36-b0ab-f637a32532e1)
-
 
 **Business Solution:**
-- These queries are used to count the records in each table which can help to know data volume.
+- 
 
 
-
-## ?. What is the total number of rows in each of the 3 tables in the database?
+## 3. 
 
 **Query:**
 ```
-  SELECT COUNT(*) AS Total_no_of_records_in_Trans
-  FROM [Transactions]
 
-  SELECT COUNT(*) AS Total_no_of_records_in_Prod
-  FROM [Prod_cat_info]
-
-  SELECT COUNT(*) AS Total_no_of_records_in_Cust
-  FROM [Customer]
 ```
 
 **Methods used:**
 - Functions - COUNT (aggregate)
 
 **Schema:**
-- Number of variables: 1
-- Number of records: 3 records (seperate)
+- Number of variables: 
+- Number of records: 
 
 **Result:**
 
-![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/bee1af48-0104-4b36-b0ab-f637a32532e1)
+
+**Business Solution:**
+- 
+
+
+## 4. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
 
 
 **Business Solution:**
-- These queries are used to count the records in each table which can help to know data volume.
+- 
+
+
+## 5. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 6. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 7. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 8. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 9. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 10. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 11. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 12. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 13. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 14. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
+
+
+
+## 15. 
+
+**Query:**
+```
+
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate)
+
+**Schema:**
+- Number of variables: 
+- Number of records: 
+
+**Result:**
+
+
+**Business Solution:**
+- 
