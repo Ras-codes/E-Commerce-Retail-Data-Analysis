@@ -84,21 +84,24 @@ This dataset is used for analyzing transactional data, including customer purcha
 ## 1. 
 
 **Query:**
-- Customer_ID (int): Unique identifier for each customer.
-- DOB (date): Date of birth of the customer.
-- Gender (varchar): Gender of the customer.
-- City_Code (int): City code of the customer.
+  SELECT COUNT(*) AS Total_no_of_records_in_Trans
+  FROM [Transactions]
+
+  SELECT COUNT(*) AS total_no_of_records_in_Prod
+  FROM [Prod_cat_info]
+
+  SELECT COUNT(*) AS total_no_of_records_in_Cust
+  FROM [Customer]
 
 **Methods used:**
-- Number of variables: 4
-- Number of records: 5647
+- Functions - COUNT (aggregate)
 
 **Schema:**
-- Number of variables: 4
-- Number of records: 5647
+- Number of variables: 1
+- Number of records: 3 records (seperate)
 
 **Result:**
-This dataset is used to store customer demographics and information.
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/a4685667-ae59-4e9d-b282-6d39496add99)
 
 **Business Solution:**
-This dataset is used to store customer demographics and information.
+These queries are used to count the records in each table which can help to know data volume.
