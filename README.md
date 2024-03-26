@@ -275,7 +275,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 ![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/326debcf-6a2d-4894-af3e-5ed4f31e581a)
 
 **Business Solution:**
-- This data shows the city with city_code 3 has maximum customers which can help to plan market broadening.
+- This data shows the city with city_code 3 has maximum as in 595 customers which can help to plan market broadening in future.
 
 
 
