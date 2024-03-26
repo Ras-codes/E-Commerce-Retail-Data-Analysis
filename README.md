@@ -96,7 +96,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 ```
 
 **Methods used:**
-- Functions - COUNT (aggregate)
+- Functions - COUNT (aggregate) (used to count the number of rows)
 
 **Schema:**
 - Number of variables: 1
@@ -122,8 +122,8 @@ This dataset is used for analyzing transactional data, including customer purcha
 ```
 
 **Methods used:**
-- Functions - COUNT (aggregate)
-- Filter - WHERE
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
 
 **Schema:**
 - Number of variables: 1
@@ -150,9 +150,9 @@ This dataset is used for analyzing transactional data, including customer purcha
 ```
 
 **Methods used:**
-- Functions - DATEDIFF
-- Functions - MIN (aggregate)
-- Functions - MAX (aggregate)
+- Functions - DATEDIFF (used to calculate the difference between two dates)
+- Functions - MIN (aggregate) (used to find the minimum values)
+- Functions - MAX (aggregate) (used to find the maximum values)
 
 **Schema:**
 - Number of variables: 3
@@ -177,7 +177,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 ```
 
 **Methods used:**
-- Filter - WHERE
+- Filter - WHERE (used to filter rows based on a specified condition/s)
 
 **Schema:**
 - Number of variables: 2
@@ -194,7 +194,275 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 # Data Analysis: 
 
-## 1. 
+## 1. Which channel is most frequently used for transactions?
+
+**Query:**
+```
+  SELECT TOP 1 Store_type, COUNT(*) AS Most_Used_Channel 
+  FROM [Transactions]
+  GROUP BY Store_type
+  ORDER BY most_used_channel DESC
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Sorting clause - ORDER BY (used to sort the result set of a query based on one or more columns)
+
+**Schema:**
+- Number of variables: 2
+- Number of records: 1
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/d8f55e64-9aa8-4317-83cd-da783fe7635d)
+
+**Business Solution:**
+- e-Shop channel is most frequently used by customers for transactions. This can help in planning channel-specific strategies and analysis for enhancing customer experiences etc.
+
+
+
+## 2. What is the count of Male and Female customers in the database?
+
+**Query:**
+```
+  SELECT Gender, COUNT(*) AS Count_of_Gender
+  FROM [Customers]
+  WHERE Gender IS NOT NULL
+  GROUP BY Gender
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+
+**Schema:**
+- Number of variables: 2
+- Number of records: 2
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/7c571cd5-de3a-4213-bcc8-03dc0bdacfb0)
+
+**Business Solution:**
+- This data shows the number of male customer and female customers which can be used to plan gender specific strategies, identifying trends.
+
+
+
+## 3. From which city do we have the maximum number of customers and how many?
+
+**Query:**
+```
+  SELECT TOP 1 city_code, COUNT(customer_id) AS No_of_Customers
+  FROM [Customers]
+  GROUP BY city_code
+  ORDER BY no_of_customers DESC
+```
+
+**Methods used:**
+- Limiting clause - TOP (used to limit the number of rows returned by a query)
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Sorting clause - ORDER BY (used to sort the result set of a query based on one or more columns)
+
+**Schema:**
+- Number of variables: 2
+- Number of records: 1
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/326debcf-6a2d-4894-af3e-5ed4f31e581a)
+
+**Business Solution:**
+- This data shows the city with city_code 3 has maximum customers which can help to plan market broadening.
+
+
+
+## 4. How many sub-categories are there under the Books category?
+
+**Query:**
+```
+  SELECT prod_cat, COUNT(prod_subcat) AS No_of_Subcategories
+  FROM [Prod_cat_info]
+  WHERE prod_cat = 'Books'
+  GROUP BY prod_cat
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+
+**Schema:**
+- Number of variables: 2
+- Number of records: 1
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/7afb7a97-ad4b-419c-b550-8bfd395c98e6)
+
+**Business Solution:**
+- There are 6 subcategories under the Books category. Queries like this can be used to retrieve subcategory data.
+
+
+
+## 5. What is the maximum quantity of products ever ordered?
+
+**Query:**
+```
+  SELECT MAX(qty) AS Max_Quantity_Ordered
+  FROM [Transactions]
+```
+
+**Methods used:**
+- Functions - MAX (aggregate) (used to find the maximum value in a set of values)
+
+**Schema:**
+- Number of variables: 1
+- Number of records: 1
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/ce189422-f6d2-432a-9252-960969058b3f)
+
+**Business Solution:**
+- 5 is the maximum quantity of products ever ordered. Queries like this can be used for to get data on products.
+
+
+
+## 6. What is the net total revenue generated in categories Electronics and Books?
+
+**Query:**
+```
+  SELECT prod_cat, SUM(total_amt) AS Net_Total_Revenue
+  FROM [Transactions] trans
+  INNER JOIN [Prod_cat_info] prod
+  ON trans.prod_cat_code = prod.prod_cat_code AND trans.prod_subcat_code = prod.prod_sub_cat_code
+  GROUP BY prod.prod_cat
+  HAVING prod_cat IN ('Electronics', 'Books')
+```
+
+**Methods used:**
+- Functions - SUM (aggregate) (used to calculate the sum of values in a column or expression)
+- INNER JOIN (used to combine rows from two or more tables based on a related column between them)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Filter - HAVING (used in combination with the GROUP BY clause to filter the rows in a result set based on aggregated values)
+
+**Schema:**
+- Number of variables: 2
+- Number of records: 2
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/cf8a3d04-37cd-47be-a55d-a7573ab34de5)
+
+**Business Solution:**
+- 10722463.635 is net total revenue generated in Electronics and 12822694.04 in Books which can used to get total revenue generated also considering the returns data. This can help to analysis category specific trends.
+
+
+
+## 7. How many customers have >10 transactions with us, excluding returns?
+
+**Query:**
+```
+  SELECT cust_id, COUNT(transaction_id) AS No_of_transactions
+  FROM Transactions
+  WHERE total_amt > 0
+  GROUP BY cust_id
+  HAVING COUNT(transaction_id) > 10
+```
+
+**Methods used:**
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Filter - HAVING (used in combination with the GROUP BY clause to filter the rows in a result set based on aggregated values)
+
+**Schema:**
+- Number of variables: 2
+- Number of records: 6
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/1d1f8fa3-2594-482c-ac61-12d91b622d69)
+
+
+**Business Solution:**
+- This data shows 6 customers who have more than 10 transactions excluding returns which can be helpful to understand customer preference,to improve customer satisfaction and introduce loyalty programs.
+
+
+
+## 8. What is the combined revenue earned from the “Electronics” & “Clothing” categories, from “Flagship stores”?
+
+**Query:**
+```
+  SELECT trans.Store_type, SUM(trans.total_amt) AS Combined_Revenue
+  FROM [Transactions] trans
+  INNER JOIN [Prod_cat_info] prod
+  ON trans.prod_cat_code = prod.prod_cat_code AND trans.prod_subcat_code = prod.prod_sub_cat_code
+  WHERE trans.total_amt > 0
+  AND prod_cat IN ('Electronics', 'Clothing' )
+  GROUP BY trans.Store_type
+  HAVING trans.Store_type = 'Flagship store'
+```
+
+**Methods used:**
+- Functions - SUM (aggregate) (used to calculate the sum of values in a column or expression)
+- INNER JOIN (used to combine rows from two or more tables based on a related column between them)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Filter - HAVING (used in combination with the GROUP BY clause to filter the rows in a result set based on aggregated values)
+
+**Schema:**
+- Number of variables: 2
+- Number of records: 1
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/f1efd811-72c5-4a95-bc18-35db80433380)
+
+**Business Solution:**
+- 3851454.295 is the combined revenue earned from Electronics and Category from Flagship stores. This can be used to understand Flagship stores performance.
+
+
+
+## 9. What is the total revenue generated from “Male” customers in “Electronics” category? Output should display total revenue by prod sub-cat.
+
+**Query:**
+```
+  SELECT prod.prod_cat, prod.prod_subcat, SUM(trans.total_amt) AS Total_Revenue
+  FROM [Transactions] trans
+  INNER JOIN [Prod_cat_info] prod
+  ON trans.prod_cat_code = prod.prod_cat_code AND trans.prod_subcat_code = prod.prod_sub_cat_code
+  INNER JOIN [Customers] cust
+  ON trans.cust_id = cust.customer_Id
+  WHERE trans.total_amt > 0 and cust.Gender = 'M'
+  GROUP BY prod.prod_cat, prod.prod_subcat
+  HAVING prod.prod_cat = 'Electronics'  
+```
+
+**Methods used:**
+- Functions - SUM (aggregate) (used to calculate the sum of values in a column or expression)
+- INNER JOIN (used to combine rows from two or more tables based on a related column between them)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Filter - HAVING (used in combination with the GROUP BY clause to filter the rows in a result set based on aggregated values)
+
+**Schema:**
+- Number of variables: 3
+- Number of records: 5
+
+**Result:**
+
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/26d1d5dd-18a4-4c5d-b379-d37f8035e9fa)
+
+**Business Solution:**
+- This data displays male customer purchases in Electronics which will help to understand gender specific customer satisfaction and to get category specific data analysis.
+
+
+
+## 10. What is percentage of sales and returns by product sub category; display only top 5 sub categories in terms of sales?
 
 **Query:**
 ```
@@ -215,70 +483,8 @@ This dataset is used for analyzing transactional data, including customer purcha
 - 
 
 
-## 2. 
 
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-## 3. 
-
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-## 4. 
-
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-## 5. 
+## 11. For all customers aged between 25 to 35 years find what is the net total revenue generated bythese consumers in last 30 days of transactions from max transaction date available in the data?
 
 **Query:**
 ```
@@ -300,7 +506,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 
 
-## 6. 
+## 12. Which product category has seen the max value of returns in the last 3 months of transactions?
 
 **Query:**
 ```
@@ -322,7 +528,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 
 
-## 7. 
+## 13. Which store-type sells the maximum products; by value of sales amount and by quantity sold?
 
 **Query:**
 ```
@@ -344,7 +550,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 
 
-## 8. 
+## 14. What are the categories for which average revenue is above the overall average.
 
 **Query:**
 ```
@@ -366,139 +572,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 
 
-## 9. 
-
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-
-## 10. 
-
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-
-## 11. 
-
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-
-## 12. 
-
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-
-## 13. 
-
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-
-## 14. 
-
-**Query:**
-```
-
-```
-
-**Methods used:**
-- Functions - COUNT (aggregate)
-
-**Schema:**
-- Number of variables: 
-- Number of records: 
-
-**Result:**
-
-
-**Business Solution:**
-- 
-
-
-
-## 15. 
+## 15. Find the average and total revenue by each subcategory for the categories which are among top 5 categories in terms of quantity sold.
 
 **Query:**
 ```
