@@ -520,11 +520,13 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Query:**
 ```
-  SELECT TOP 30 tran_date
+  --Top 30 transaction dates
+  SELECT TOP 30 tran_date 
   FROM [Transactions]
   GROUP BY tran_date
   ORDER BY tran_date DESC;
 
+  --Revenue in those 30 days
   WITH Age_Revenue AS
   (
   SELECT TOP 30 trans.tran_date, SUM(trans.total_amt) AS Total_amount 
