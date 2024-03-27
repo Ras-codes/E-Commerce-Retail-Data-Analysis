@@ -473,7 +473,7 @@ This dataset is used for analyzing transactional data, including customer purcha
   ON trans.prod_cat_code = prod.prod_cat_code AND trans.prod_subcat_code = prod.prod_sub_cat_code
   WHERE trans.total_amt > 0
   GROUP BY prod.prod_subcat
-  ORDER BY Sales_Amount
+  ORDER BY Sales_Amount;
 
   --Percentage sales and returns
   WITH Sales_Returns AS
@@ -509,8 +509,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 - Number of records: 5, 5
 
 **Result:**
-
-![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/aff2ca67-bae4-44df-8ea4-0e081b8bc58f)
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/952db1fd-74f7-48be-ba51-71133b299ee3)
 
 **Business Solution:**
 - The data provides information on sales and returns percentages within the top product categories. This help in improving overall profitability and customer satisfaction.
@@ -524,7 +523,7 @@ This dataset is used for analyzing transactional data, including customer purcha
   SELECT TOP 30 tran_date
   FROM [Transactions]
   GROUP BY tran_date
-  ORDER BY tran_date DESC
+  ORDER BY tran_date DESC;
 
   WITH Age_Revenue AS
   (
