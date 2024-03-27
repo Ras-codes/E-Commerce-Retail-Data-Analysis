@@ -367,7 +367,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 **Query:**
 ```
   SELECT cust_id, COUNT(transaction_id) AS No_of_transactions
-  FROM Transactions
+  FROM [Transactions]
   WHERE total_amt > 0
   GROUP BY cust_id
   HAVING COUNT(transaction_id) > 10
@@ -532,21 +532,30 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Query:**
 ```
-
+  SELECT TOP 1 Store_type, SUM(total_amt) AS Sales_Amount, COUNT(Qty) AS Number_of_Products
+  FROM [Transactions]
+  WHERE total_amt > 0 
+  GROUP BY Store_type
+  ORDER BY Sales_Amount DESC, Number_of_Products DESC
 ```
 
 **Methods used:**
-- Functions - COUNT (aggregate)
+- Functions - SUM (aggregate) (used to calculate the sum of values in a column or expression)
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Sorting clause - ORDER BY (used to sort the result set of a query based on one or more columns)
 
 **Schema:**
-- Number of variables: 
-- Number of records: 
+- Number of variables: 3
+- Number of records: 1
 
 **Result:**
 
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/a43e5fa5-9d56-4380-a7cb-dff7bba8ae0a)
 
 **Business Solution:**
-- 
+- e-Shop store seels maximum products both by quantity and sales amount. Queries like this can help with Inventory management, planning future strategies for sales etc.
 
 
 
@@ -554,21 +563,32 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Query:**
 ```
-
+  SELECT prod.prod_cat, AVG(trans.total_amt) AS Categorial_Average_Revenue
+  FROM [Transactions] trans
+  INNER JOIN [Prod_cat_info] prod
+  ON trans.prod_cat_code = prod.prod_cat_code AND trans.prod_subcat_code = prod.prod_sub_cat_code
+  WHERE trans.total_amt > 0 
+  GROUP BY prod.prod_cat
+  HAVING  AVG(trans.total_amt)  > (SELECT AVG(total_amt) AS Overall_Average_Revenue FROM [Transactions] WHERE total_amt > 0)
 ```
 
 **Methods used:**
-- Functions - COUNT (aggregate)
+- Functions - AVG (aggregate) (used to calculate the average value of a set of values within a column)
+- INNER JOIN (used to combine rows from two or more tables based on a related column between them)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Filter - HAVING (used in combination with the GROUP BY clause to filter the rows in a result set based on aggregated values)
 
 **Schema:**
-- Number of variables: 
-- Number of records: 
+- Number of variables: 2
+- Number of records: 4
 
 **Result:**
 
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/4bbd80fe-7229-4246-8ed6-eb0b4e01264c)
 
 **Business Solution:**
-- 
+- Categories Bags, Books, Clothing, Electronics whose average revenue (sales excluding returns) exceeds the overall average. This data can be used to plan strategies for high-performing categories which can maximize profit.
 
 
 
