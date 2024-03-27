@@ -510,21 +510,34 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Query:**
 ```
-
+  SELECT prod.prod_cat, COUNT(trans.Qty) AS No_of_returns, ABS(SUM(trans.total_amt)) AS Return_Amount
+  FROM [Transactions] trans
+  INNER JOIN [prod_cat_info] prod 
+  ON trans.prod_cat_code = prod.prod_cat_code AND trans.prod_subcat_code = prod.prod_sub_cat_code
+  WHERE trans.total_amt < 0 
+  AND DATEDIFF(month, '2014-09-01',trans.tran_date)=3
+  GROUP BY prod.prod_cat
 ```
 
 **Methods used:**
-- Functions - COUNT (aggregate)
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- Functions - ABS (scalar) (used to returns the absolute value of a numeric expression/ removes any negative sign from a negative number)
+- Functions - SUM (aggregate) (used to calculate the sum of values in a column or expression)
+- INNER JOIN (used to combine rows from two or more tables based on a related column between them)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Functions - DATEDIFF (used to calculate the difference between two dates)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
 
 **Schema:**
-- Number of variables: 
-- Number of records: 
+- Number of variables: 3
+- Number of records: 1
 
 **Result:**
 
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/1bf649a4-ce3d-4f3b-a76f-90110cd8af25)
 
 **Business Solution:**
-- 
+- Category Home and Kitchen has the maximum (1) returns in last 3 months. Queries like this can be used to improve product quality, customer satisfaction and customer interaction.
 
 
 
@@ -555,7 +568,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 ![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/a43e5fa5-9d56-4380-a7cb-dff7bba8ae0a)
 
 **Business Solution:**
-- e-Shop store seels maximum products both by quantity and sales amount. Queries like this can help with Inventory management, planning future strategies for sales etc.
+- e-Shop store sells maximum products both by quantity and sales amount. Queries like this can help with Inventory management, planning future strategies for sales etc.
 
 
 
@@ -578,6 +591,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 - Filter - WHERE (used to filter rows based on a specified condition/s)
 - Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
 - Filter - HAVING (used in combination with the GROUP BY clause to filter the rows in a result set based on aggregated values)
+- Nested query - SUBQUERY (used to retrieve data that will be used as a condition or criteria within the main query)
 
 **Schema:**
 - Number of variables: 2
@@ -596,18 +610,47 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Query:**
 ```
+  SELECT TOP 5 prod.prod_cat, COUNT(trans.Qty) AS Quantity_Sold 
+  FROM [Transactions] trans
+  INNER JOIN [prod_cat_info] prod 
+  ON trans.prod_cat_code = prod.prod_cat_code AND trans.prod_subcat_code = prod.prod_sub_cat_code
+  WHERE total_amt > 0
+  GROUP BY prod.prod_cat
+  ORDER BY Quantity_Sold DESC
 
+  SELECT prod.prod_cat, prod.prod_subcat, ROUND(SUM(trans.total_amt), 3) AS Total_Revenue, ROUND(AVG(trans.total_amt), 3) AS Average_Revenue  
+  FROM [Transactions] trans
+  INNER JOIN [prod_cat_info] prod 
+  ON trans.prod_cat_code = prod.prod_cat_code AND trans.prod_subcat_code = prod.prod_sub_cat_code
+  WHERE trans.total_amt > 0 AND prod.prod_cat IN ('Books', 'Electronics', 'Home and kitchen', 'Footwear', 'Clothing')
+  GROUP BY prod_cat, prod_subcat
+  ORDER BY CASE WHEN prod_cat = 'Books' THEN 1
+                WHEN prod_cat = 'Electronics' THEN 2
+                WHEN prod_cat = 'Home and kitchen' THEN 3
+                WHEN prod_cat = 'Footwear' THEN 4
+                ELSE 5
+                END
 ```
 
 **Methods used:**
-- Functions - COUNT (aggregate)
+- Functions - COUNT (aggregate) (used to count the number of rows)
+- INNER JOIN (used to combine rows from two or more tables based on a related column between them)
+- Filter - WHERE (used to filter rows based on a specified condition/s)
+- Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
+- Sorting clause - ORDER BY (used to sort the result set of a query based on one or more columns)
+
+- Functions - ROUND (scalar) (used to round a numeric value to a specified number of decimal places)
+- Functions - SUM (aggregate) (used to calculate the sum of values in a column or expression)
+- Functions - AVG (aggregate) (used to calculate the average value of a set of values within a column)
+- CASE (used to evaluate conditions and return different values based on those conditions)
 
 **Schema:**
-- Number of variables: 
-- Number of records: 
+- Number of variables: 2, 4
+- Number of records: 5, 21
 
 **Result:**
 
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/cdad1dfb-3ea9-40a8-82c3-5235141f6567)
 
 **Business Solution:**
-- 
+- This analysis can be used to compare dynamics in revenue across subcategories within the most popular product categories, which can be helpful to plan strategies and broaden the sectors.
