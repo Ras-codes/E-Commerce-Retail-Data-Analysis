@@ -366,11 +366,15 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Query:**
 ```
-  SELECT cust_id, COUNT(transaction_id) AS No_of_transactions
-  FROM [Transactions]
-  WHERE total_amt > 0
-  GROUP BY cust_id
-  HAVING COUNT(transaction_id) > 10
+  WITH Count_Customers AS 
+  (
+   SELECT cust_id, COUNT(transaction_id) AS No_of_transactions
+   FROM [Transactions]
+   WHERE total_amt > 0
+   GROUP BY cust_id
+   HAVING COUNT(transaction_id) > 10
+  )
+  SELECT COUNT(*) AS No_of_Customers FROM Count_Customers 
 ```
 
 **Methods used:**
@@ -378,6 +382,7 @@ This dataset is used for analyzing transactional data, including customer purcha
 - Filter - WHERE (used to filter rows based on a specified condition/s)
 - Grouping clause - GROUP BY (used to group rows that have the same values into summary rows)
 - Filter - HAVING (used in combination with the GROUP BY clause to filter the rows in a result set based on aggregated values)
+- CTE (temporary table that you can reference within a query)
 
 **Schema:**
 - Number of variables: 2
@@ -385,7 +390,8 @@ This dataset is used for analyzing transactional data, including customer purcha
 
 **Result:**
 
-![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/1d1f8fa3-2594-482c-ac61-12d91b622d69)
+![image](https://github.com/Ras-codes/E-Commerce-Retail-Data-Analysis/assets/164164852/d8267aae-5c82-4885-877a-bde73ba511d3)
+
 
 
 **Business Solution:**
