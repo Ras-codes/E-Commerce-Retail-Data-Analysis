@@ -22,9 +22,9 @@ E-Commerce Retail Data Analysis is to understand customer behavior using their p
 - SQL Editor: SQL Server Management Studio (SSMS)
 
 
-### Dataset Description: 
+## Dataset Description: 
 
-## Customers
+### Customers
 
 **Variables:**
 - Customer_ID (int): Unique identifier for each customer.
@@ -39,7 +39,7 @@ E-Commerce Retail Data Analysis is to understand customer behavior using their p
 **Purpose:**
 This dataset is used to store customer demographics and information.
 
-## Prod_cat_info
+### Prod_cat_info
 
 **Variables:**
 - Prod_cat_code (int): Product category code.
@@ -54,7 +54,7 @@ This dataset is used to store customer demographics and information.
 **Purpose:**
 This dataset is used for categorizing products based on their category and subcategory.
 
-## Transactions
+### Transactions
 
 **Variables:**
 - transaction_id (int): Unique identifier for each transaction.
